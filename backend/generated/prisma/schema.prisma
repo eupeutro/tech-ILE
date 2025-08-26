@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Terreiro {
+  id_terreiro   Int     @id @default(autoincrement())
+  nome_terreiro String  @db.VarChar(99)
+  cnpj_terreiro String  @db.VarChar(14)
+  Cep_terreiro  String  @db.VarChar(8)
+  Tipo_terreiro String? @db.VarChar(20)
+
+  usuarios Usuario[] // relação 1:N
+  adms     Adm[] // relação 1:N
+}
+
+model Usuario {
+  id_usuario      Int      @id @default(autoincrement())
+  nome_usuario    String   @db.VarChar(99)
+  idade_usuario   DateTime
+  email_usuario   String   @db.VarChar(99)
+  contato_usuario String   @db.VarChar(12)
+  senha_usuario   String   @db.VarChar(20)
+  permicao_adm    Boolean?
+
+  id_terreiro_fk Int?
+  terreiro       Terreiro? @relation(fields: [id_terreiro_fk], references: [id_terreiro])
+}
+
+model Adm {
+  id_adm   Int    @id @default(autoincrement())
+  nome_adm String @db.VarChar(99)
+
+  id_terreiro_fk Int?
+  terreiro       Terreiro? @relation(fields: [id_terreiro_fk], references: [id_terreiro])
+}
