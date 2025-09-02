@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -25,7 +24,7 @@ model Usuario {
   idade_usuario   DateTime
   email_usuario   String  @db.VarChar(99)
   contato_usuario String  @db.VarChar(12)
-  senha_usuario   String  @db.VarChar(20)
+  senha_usuario   String @db.VarChar(255)
   permicao_adm    Boolean?
   
   id_terreiro_fk  Int?
