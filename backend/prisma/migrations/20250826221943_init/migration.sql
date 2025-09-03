@@ -25,7 +25,7 @@ CREATE TABLE `Usuario` (
     `idade_usuario` DATETIME(3) NOT NULL,
     `email_usuario` VARCHAR(99) NOT NULL,
     `contato_usuario` VARCHAR(12) NOT NULL,
-    `senha_usuario` VARCHAR(20) NOT NULL,
+    `senha_usuario` VARCHAR(255) NOT NULL,
     `permicao_adm` BOOLEAN NULL,
     `id_terreiro_fk` INTEGER NULL,
 
