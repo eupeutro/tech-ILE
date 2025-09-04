@@ -75,7 +75,7 @@
                 <h1 class="login-title">Já possui uma conta?</h1>
                 <p class="login-text">Cadastre-se agora e fique por dentro de tudo no seu terreiro.</p>
                 
-                <button class="login-btn" onclick="window.location.href='login.html'">
+                <button class="login-btn" onclick="navigateSmooth('login.html')">
                     FAZER LOGIN
                 </button>
             </div>
@@ -83,6 +83,24 @@
     </div>
 
     <script>
+        // Navegação suave entre páginas
+        function navigateSmooth(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+        
+        // Fade-in ao carregar a página
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
         // Formatação automática do número de telefone
         document.getElementById('numero').addEventListener('input', function (e) {
             let x = e.target.value.replace(/\D/g, '');
@@ -98,7 +116,7 @@
             e.target.value = x;
         });
 
-        // Formulário de cadastro
+        // Formulário de cadastro usando os endpoints de neto boiola
         document.getElementById('cadastroForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             

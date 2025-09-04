@@ -21,7 +21,7 @@
                 <h1 class="signup-title">Ainda não possui uma conta?</h1>
                 <p class="signup-text">Junte-se à nossa comunidade espiritual e tenha acesso completo ao gerenciamento do seu terreiro</p>
                 
-                <button class="signup-btn" onclick="window.location.href='cadastro.html'">
+                <button class="signup-btn" onclick="navigateSmooth('cadastro.html')">
                     CRIAR CONTA
                 </button>
             </div>
@@ -59,6 +59,24 @@
     </div>
 
     <script>
+        // Navegação suave entre páginas
+        function navigateSmooth(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease-out';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+        
+        // Fade-in ao carregar a página
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
