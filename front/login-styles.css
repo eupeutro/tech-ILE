@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --vermelho-padrao:#AE0600;
+    --vermelho-escuro:#8B0000;
+    --bege-padrao: #FEF7E7;
+    --bege-amarelado:#FCD6A8;
+    --bege-escuro:#F5EBD5;
+    --bege-muito-escuro:#D1C4A7 ;
+    --cinza-escuro:#202020;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bege-padrao);
+    height: 100vh;
+    overflow: hidden;
+    font-feature-settings: 'cv01', 'cv03', 'cv04', 'cv11';
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    gap: 2px;
+}
+
+/* Card da esquerda */
+.left-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 35px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(20px);
+
+}
+
+.image-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.8s ease;
+}
+
+.left-card:hover .main-image {
+    transform: scale(1.02);
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        rgba(139, 69, 19, 0.1) 40%,
+        var(--vermelho-escuro) 100%
+    );
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 35px;
+    text-align: center;
+    z-index: 2;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.signup-title {
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--bege-padrao);
+    margin-bottom: 12px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    letter-spacing: -0.5px;
+}
+
+.signup-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--bege-amarelado);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.signup-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    color: var(--bege-padrao);
+    padding: 14px 185px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.signup-btn:hover::before {
+    left: 100%;
+}
+
+.signup-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(63, 0, 0, 0.3);
+}
+
+/* Área de login da direita */
+.right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px;
+    background: var(--bege-padrao);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+.icon-obaluae {
+    width: 200px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.icon-obaluae:hover {
+    transform: scale(1.05);
+}
+
+.login-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--vermelho-padrao);
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--vermelho-padrao) 0%, var(--vermelho-escuro) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vermelho-escuro);
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px 20px;
+    border: 1px solid var(--bege-muito-escuro);
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bege-escuro);
+    backdrop-filter: blur(10px);
+    color: var(--vermelho-escuro);
+}
+
+.input-group input::placeholder {
+    color: rgba(74, 85, 104, 0.5);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--vermelho-padrao);
+    background: var(--bege-padrao);
+    transform: translateY(-2px);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 12px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--vermelho-padrao);
+    border-radius: 4px;
+    border: 2px solid var(--vermelho-escuro);
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color: var(--vermelho-padrao);
+    cursor: pointer;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+}
+
+.login-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #AE0600 0%, #D4322A 100%);
+    border: none;
+    color: var(--bege-padrao);
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 20px rgba(174, 6, 0, 0.3),
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #D4322A 0%, #AE0600 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 20px rgba(174, 6, 0, 0.4),
+        0 4px 10px rgba(174, 6, 0, 0.3);
+}
+
+.login-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .container {
+        padding: 24px;
+        gap: 24px;
+    }
+    
+    .right-section {
+        padding: 48px;
+    }
+    
+    .icon-obaluae {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .login-title {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .left-card {
+        min-height: 50vh;
+    }
+    
+    .card-footer {
+        padding: 32px;
+    }
+    
+    .signup-title {
+        font-size: 24px;
+    }
+    
+    .signup-text {
+        font-size: 14px;
+        max-width: 280px;
+    }
+    
+    .right-section {
+        padding: 32px;
+        min-height: auto;
+    }
+    
+    .login-container {
+        max-width: 100%;
+    }
+    
+    .icon-obaluae {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 24px;
+    }
+    
+    .login-title {
+        font-size: 28px;
+        margin-bottom: 28px;
+    }
+    
+    .input-group {
+        margin-bottom: 24px;
+    }
+    
+    .checkbox-group {
+        margin-bottom: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .right-section {
+        padding: 24px;
+    }
+    
+    .card-footer {
+        padding: 24px;
+    }
+    
+    .signup-title {
+        font-size: 20px;
+    }
+    
+    .login-title {
+        font-size: 24px;
+    }
+}

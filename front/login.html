@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Ilê</title>
+    <link rel="icon" type="image/png" href="imagens/icon.png">
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Card da esquerda -->
+        <div class="left-card">
+            <div class="image-container">
+                <img src="https://i.pinimg.com/1200x/a3/39/d0/a339d0bbb56b17238274d6c1bf5cd17b.jpg" alt="Imagem religiosa" class="main-image">
+            </div>
+            
+            <div class="card-footer">
+                <img src="imagens/logo.png" alt="Logo" class="logo">
+                
+                <h1 class="signup-title">Ainda não possui uma conta?</h1>
+                <p class="signup-text">Junte-se à nossa comunidade espiritual e tenha acesso completo ao gerenciamento do seu terreiro</p>
+                
+                <button class="signup-btn" onclick="window.location.href='cadastro.html'">
+                    CRIAR CONTA
+                </button>
+            </div>
+        </div>
+
+        <!-- Área de login da direita -->
+        <div class="right-section">
+            <div class="login-container">
+                <img src="imagens/iconeObaluae.png" alt="Ícone Obaluaê" class="icon-obaluae">
+
+                <h1 class="login-title">Bem-vindo de volta!</h1>
+
+                <form class="login-form" id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="lembrar" name="lembrar">
+                        <label for="lembrar">Lembrar senha</label>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        ENTRAR
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: senha
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert('Login realizado com sucesso!');
+                    // Salvar dados do usuário se necessário
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'home-filhos.html';
+                } else {
+                    alert('Erro: ' + data.error);
+                }
+            } catch (error) {
+                alert('Erro ao conectar com o servidor: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
