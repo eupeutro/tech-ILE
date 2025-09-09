@@ -4,8 +4,6 @@
   - You are about to drop the `users` table. If the table is not empty, all the data it contains will be lost.
 
 */
--- DropTable
-DROP TABLE `users`;
 
 -- CreateTable
 CREATE TABLE `Terreiro` (
@@ -24,7 +22,7 @@ CREATE TABLE `Usuario` (
     `nome_usuario` VARCHAR(99) NOT NULL,
     `idade_usuario` DATETIME(3) NOT NULL,
     `email_usuario` VARCHAR(99) NOT NULL,
-    `contato_usuario` VARCHAR(12) NOT NULL,
+    `contato_usuario` VARCHAR(20) NOT NULL,
     `senha_usuario` VARCHAR(255) NOT NULL,
     `permicao_adm` BOOLEAN NULL,
     `id_terreiro_fk` INTEGER NULL,
