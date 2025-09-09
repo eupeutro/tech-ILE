@@ -22,8 +22,8 @@ model Usuario {
   id_usuario      Int     @id @default(autoincrement())
   nome_usuario    String  @db.VarChar(99)
   idade_usuario   DateTime
-  email_usuario   String  @db.VarChar(99)
-  contato_usuario String  @db.VarChar(12)
+  email_usuario   String  @db.VarChar(99)  @unique
+  contato_usuario String  @db.VarChar(20)
   senha_usuario   String @db.VarChar(255)
   permicao_adm    Boolean?
   
